@@ -42,7 +42,16 @@
   font-size: 1.2rem;
   height: 1.4rem;
   width: fit-content;
-  padding: 0.75rem 0.5rem;  
+  padding: 0.75rem 0.5rem;
+}
+.button-group button:hover {
+  background-color: var(--color-hover);
+}
+.button-group button:active {
+  filter: brightness(0.9);
+}
+.is-active {
+  filter: brightness(0.8);
 }
 .heading-dropdown-menu-div {
   position: relative;
@@ -61,12 +70,6 @@
   z-index: 1;
   transition: all 250ms;
 }
-.button-group button:active {
-  filter: brightness(0.9);
-}
-.is-active {
-  filter: brightness(0.8);
-}
 .heading-show {
   max-height: fit-content;
   height: 500px;
@@ -75,6 +78,30 @@
   transition: all 350ms;
 }
 .chevron-down {
+  transition: all 350ms;
+}
+.color-dropdown-menu-div {
+  position: relative;
+}
+.color-dropdown-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  max-height: fit-content;
+  height: 200px;
+  opacity: 0; 
+  filter: blur(3px);  
+  z-index: 1;
+  transition: all 150ms;
+}
+.color-show {
+  max-height: fit-content;
+  height: 200px;
+  opacity: 1;
+  filter: blur(0);
   transition: all 350ms;
 }
 .submit-button {
@@ -90,7 +117,14 @@
   width: fit-content;
   padding: 1.25rem 1.5rem;  
   margin-top: 0.5rem;
+  &:hover {
+    background-color: var(--color-hover);
+  }
+  &:active {
+    scale: 1.05;
+  }
 }
+
 .post {
   :first-child {
     margin-top: 0;

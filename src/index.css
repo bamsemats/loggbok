@@ -3,6 +3,7 @@
   --color-bg: #ffffff;
   --color-surface: #f8f9fa;
   --color-card: #f1f3f5;
+  --color-hover: #8ca7da;
 
   /* Text */
   --color-text: #212529;
@@ -40,6 +41,7 @@
   --color-bg: #121212;
   --color-surface: #1e1e1e;
   --color-card: #2a2a2a;
+  --color-hover: #143470;
 
   --color-text: #f1f1f1;
   --color-text-muted: #a0a0a0;
