@@ -1,0 +1,74 @@
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+}
+.tiptap {
+  box-sizing: border-box;
+  width: 75%;
+  min-height: 50vh;
+  justify-self: center;
+  margin: 0;
+  padding: 1rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-surface);
+}
+.button-group {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 75%;
+  justify-self: center;
+  margin: 0;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-surface);
+}
+.button-group > button {
+  /* border: none; */
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--color-card);
+  font-size: 1.2rem;
+  height: 1.4rem;
+  width: fit-content;
+  padding: 0.75rem 0.5rem;  
+}
+.submit-button {
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+  background-color: var(--color-card);
+  font-size: 1.5rem;
+  height: 1.8rem;
+  width: fit-content;
+  padding: 1.25rem 1.5rem;  
+  margin-top: 0.5rem;
+}
+.post {
+  :first-child {
+    margin-top: 0;
+  }
+}
+.post {
+  box-sizing: border-box;
+  background-color: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 0.5rem;
+  width: 75%;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+}

@@ -1,3 +1,72 @@
+:root {
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-card: #f1f3f5;
+
+  /* Text */
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-heading: #111;
+
+  /* Primary Colors */
+  --color-primary: #0d6efd;
+  --color-primary-hover: #0b5ed7;
+  --color-primary-contrast: #ffffff;
+
+  /* Secondary/Accent Colors */
+  --color-secondary: #6c757d;
+  --color-accent: #6610f2;
+
+  /* Buttons */
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-hover);
+  --button-text: var(--color-primary-contrast);
+
+  /* Links */
+  --link-color: #0d6efd;
+  --link-hover: #0a58ca;
+
+  /* Borders & Dividers */
+  --color-border: #dee2e6a9;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2a2a2a;
+
+  --color-text: #f1f1f1;
+  --color-text-muted: #a0a0a0;
+  --color-heading: #ffffff;
+
+  --color-primary: #4dabf7;
+  --color-primary-hover: #339af0;
+  --color-primary-contrast: #000000;
+
+  --color-secondary: #adb5bd;
+  --color-accent: #be4bdb;
+
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-hover);
+  --button-text: var(--color-primary-contrast);
+
+  --link-color: #4dabf7;
+  --link-hover: #339af0;
+
+  --color-border: #343a40;
+
+  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 10px 20px rgba(255, 255, 255, 0.15);
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +74,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--color-bg);
 }
 
 code {
