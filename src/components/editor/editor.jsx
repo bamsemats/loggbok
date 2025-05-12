@@ -5,7 +5,7 @@ import { Color } from '@tiptap/extension-color';
 import ListItem from '@tiptap/extension-list-item';
 import TextStyle from '@tiptap/extension-text-style';
 import StarterKit from '@tiptap/starter-kit';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {useState} from 'react';
 import { BiBold, BiCodeAlt, BiRedo, BiStrikethrough, BiUndo } from "react-icons/bi";
 import { BiItalic } from "react-icons/bi";
@@ -16,6 +16,7 @@ import DOMPurify from 'dompurify';
 import { BsBlockquoteRight } from 'react-icons/bs';
 import { GoHorizontalRule } from 'react-icons/go';
 import { VscNewline } from 'react-icons/vsc';
+import { LuChevronDown, LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
 
 // define your extension array
 const extensions = [StarterKit]
@@ -47,7 +48,60 @@ const Tiptap = () => {
 
   const MenuBar = () => {
     const { editor } = useCurrentEditor()
+    
+    const [currentHeading, setCurrentHeading] = useState('');
+    const [headingDropDownShown, setHeadingDropDownShown] = useState(false);
+    const headingDropDownRef = useRef(null);
+    const headingDropDownButtonRef = useRef(null);
+
+    const activeHeading = editor.isActive('heading', {level: 2}) ? 'H2' : editor.isActive('heading', {level: 3}) ? 'H3' : editor.isActive('heading', {level: 4}) ? 'H4' : editor.isActive('heading', {level: 5}) ? 'H5' : editor.isActive('heading', {level: 6}) ? 'H6' : 'H1';
+
+    console.log(document.querySelector('.heading-dropdown-menu'));
+
+    useEffect(() => {
+      setCurrentHeading((prev) => ({
+        H1: <LuHeading1 />,
+        H2: <LuHeading2 />,
+        H3: <LuHeading3 />,
+        H4: <LuHeading4 />,
+        H5: <LuHeading5 />,
+        H6: <LuHeading6 />,
+      }))
+    }, [])
+
+    function handleClickHeadingDropdown(event) {
+      event.stopPropagation(); // Prevent the click from propagating to the document
+      setHeadingDropDownShown((prevState) => {
+        const dropDownMenu = document.querySelector('.heading-dropdown-menu');
+        if (!prevState) {
+          dropDownMenu.classList.add('heading-show'); // Open the menu
+        } else {
+          dropDownMenu.classList.remove('heading-show'); // Close the menu
+        }
+        return !prevState; // Toggle the state
+      });
+    }
+
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (
+          headingDropDownRef.current &&
+          !headingDropDownRef.current.contains(event.target) &&
+          headingDropDownButtonRef.current &&
+          !headingDropDownButtonRef.current.contains(event.target)
+        ) {
+          headingDropDownRef.current.classList.remove('heading-show');
+          setHeadingDropDownShown(false);
+        }
+      }
   
+      document.addEventListener('mousedown', handleClickOutside);
+  
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
+
     if (!editor) {
       return null
     }
@@ -119,42 +173,57 @@ const Tiptap = () => {
           >
             Paragraph
           </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
-          >
-            H1
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-            className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
-          >
-            H2
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-            className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
-          >
-            H3
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-            className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
-          >
-            H4
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-            className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-          >
-            H5
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-            className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-          >
-            H6
-          </button>
+          <div className='heading-dropdown-menu-div'>
+            <button 
+              ref={headingDropDownButtonRef}
+              className='heading-dropdown-menu-button'
+              onClick={handleClickHeadingDropdown}
+            >
+              {currentHeading[activeHeading]} <LuChevronDown className='chevron-down' style={{transform: headingDropDownShown ? 'scale(-1, -1)' : ''}}/>
+            </button>
+            <div 
+              className='heading-dropdown-menu'
+              ref={headingDropDownRef}
+            >
+              <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+              className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+              >
+                H1
+              </button>
+              <button
+                onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+              >
+                H2
+              </button>
+              <button
+                onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+                className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
+              >
+                H3
+              </button>
+              <button
+                onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+                className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
+              >
+                H4
+              </button>
+              <button
+                onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+                className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
+              >
+                H5
+              </button>
+              <button
+                onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+                className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
+              >
+                H6
+              </button>
+            </div>
+          </div>
+          
           <button
             onClick={() => editor.chain().focus().toggleBulletList().run()}
             className={editor.isActive('bulletList') ? 'is-active' : ''}
