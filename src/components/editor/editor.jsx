@@ -387,7 +387,7 @@ const Tiptap = () => {
                 onClick={handleClickHeadingDropdown}
                 data-title='Heading'
               >
-                {currentHeading[activeHeading]} <LuChevronDown className='chevron-down' style={{transform: headingDropDownShown ? 'scale(-1, -1)' : ''}}/>
+                {currentHeading[activeHeading] || <LuHeading1 />} <LuChevronDown className='chevron-down' style={{transform: headingDropDownShown ? 'scale(-1, -1)' : ''}}/>
               </button>
               <div 
                 className='heading-dropdown-menu'

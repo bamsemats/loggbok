@@ -53,6 +53,7 @@
   /* border: none; */
   position: relative;
   isolation: isolate;
+  user-select: none;
   border-radius: 0.5rem;
   border: 2px solid transparent;
   display: flex;
@@ -245,6 +246,8 @@
   transition: opacity 350ms;
 }
 .submit-button {
+  cursor: pointer;
+  user-select: none;
   border: none;
   border-radius: 0.5rem;
   display: flex;
@@ -257,11 +260,18 @@
   width: fit-content;
   padding: 1.25rem 1.5rem;  
   margin-top: 0.5rem;
+
+  transition: scale var(--spring-duration);
+  transition-timing-function: var(--spring-timing-function);
+
   &:hover {
     background-color: var(--color-hover);
   }
+
   &:active {
-    scale: 1.05;
+    scale: 0.875;
+    transition-timing-function: ease-in;
+    transition-duration: 0.125s;
   }
 }
 
