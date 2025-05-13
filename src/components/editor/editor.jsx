@@ -309,6 +309,7 @@ const Tiptap = () => {
                   .run()
               }
               className={editor.isActive('bold') ? 'is-active' : ''}
+              data-title='Bold'
             >
               <LuBold />
             </button>
@@ -322,6 +323,7 @@ const Tiptap = () => {
                   .run()
               }
               className={editor.isActive('italic') ? 'is-active' : ''}
+              data-title='Italic'
             >
               <LuItalic />
             </button>
@@ -335,6 +337,7 @@ const Tiptap = () => {
                   .run()
               }
               className={editor.isActive('underline') ? 'is-active' : ''}
+              data-title='Underline'
             >
               <LuUnderline />
             </button>
@@ -348,6 +351,7 @@ const Tiptap = () => {
                   .run()
               }
               className={editor.isActive('strike') ? 'is-active' : ''}
+              data-title='Strike'
             >
               <LuStrikethrough />
             </button>
@@ -362,12 +366,14 @@ const Tiptap = () => {
             <button
               onClick={() => editor.chain().focus().toggleSuperscript().run()}
               className={editor.isActive('superscript') ? 'is-active' : ''}
+              data-title='Superscript'
             >
               <LuSuperscript />
             </button>
             <button
               onClick={() => editor.chain().focus().toggleSubscript().run()}
               className={editor.isActive('subscript') ? 'is-active' : ''}
+              data-title='Subscript'
             >
               <LuSubscript />
             </button>
@@ -379,6 +385,7 @@ const Tiptap = () => {
                 ref={headingDropDownButtonRef}
                 className='heading-dropdown-menu-button'
                 onClick={handleClickHeadingDropdown}
+                data-title='Heading'
               >
                 {currentHeading[activeHeading]} <LuChevronDown className='chevron-down' style={{transform: headingDropDownShown ? 'scale(-1, -1)' : ''}}/>
               </button>
@@ -427,6 +434,7 @@ const Tiptap = () => {
             <button
               onClick={() => editor.chain().focus().setParagraph().run()}
               className={editor.isActive('paragraph') ? 'is-active' : ''}
+              data-title='Paragraph'
             >
               <LuPilcrow />
             </button>
@@ -438,6 +446,7 @@ const Tiptap = () => {
                 ref={alignDropDownButtonRef}
                 className='align-dropdown-menu-button'
                 onClick={handleClickAlignDropdown}
+                data-title='Text Alignment'
               >
                 {currentAlign} <LuChevronDown className='chevron-down' style={{transform: alignDropDownShown ? 'scale(-1, -1)' : ''}}/>
               </button>
@@ -448,24 +457,28 @@ const Tiptap = () => {
               <button
                   onClick={() => editor.chain().focus().setTextAlign('left').run()}
                   className={editor.isActive({textAlign: 'left'}) ? 'is-active' : ''}
+                  data-title='Align Left'
                 >
                   <LuAlignLeft />
                 </button>
                 <button
                   onClick={() => editor.chain().focus().setTextAlign('center').run()}
                   className={editor.isActive({textAlign: 'center'}) ? 'is-active' : ''}
+                  data-title='Align Center'
                 >
                   <LuAlignCenter />
                 </button>
                 <button
                   onClick={() => editor.chain().focus().setTextAlign('right').run()}
                   className={editor.isActive({textAlign: 'right'}) ? 'is-active' : ''}
+                  data-title='Align Right'
                 >
                   <LuAlignRight />
                 </button>
                 <button
                   onClick={() => editor.chain().focus().setTextAlign('justify').run()}
                   className={editor.isActive({textAlign: 'justify'}) ? 'is-active' : ''}
+                  data-title='Align Justify'
                 >
                   <LuAlignJustify />
                 </button>
@@ -474,12 +487,14 @@ const Tiptap = () => {
             <button
               onClick={() => editor.chain().focus().toggleBulletList().run()}
               className={editor.isActive('bulletList') ? 'is-active' : ''}
+              data-title='Bullet List'
             >
               <LuList />
             </button>
             <button
               onClick={() => editor.chain().focus().toggleOrderedList().run()}
               className={editor.isActive('orderedList') ? 'is-active' : ''}
+              data-title='Ordered List'
             >
               <LuListOrdered />
             </button>
@@ -493,25 +508,28 @@ const Tiptap = () => {
                   .run()
               }
               className={editor.isActive('code') ? 'is-active' : ''}
+              data-title='Code'
             >
               <LuCodeXml />
             </button>
             <button
               onClick={() => editor.chain().focus().toggleCodeBlock().run()}
               className={editor.isActive('codeBlock') ? 'is-active' : ''}
+              data-title='Code Block'
             >
               <LuSquareCode />
             </button>
             <button
               onClick={() => editor.chain().focus().toggleBlockquote().run()}
               className={editor.isActive('blockquote') ? 'is-active' : ''}
+              data-title='Block Quote'
             >
               <LuTextQuote />
             </button>
-            <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+            <button onClick={() => editor.chain().focus().setHorizontalRule().run()} data-title='Horizontal Line'>
             <GoHorizontalRule />
             </button>
-            <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+            <button onClick={() => editor.chain().focus().setHardBreak().run()} data-title='New Line'>
             <LuCornerDownLeft />
             </button>
           </div>
@@ -520,6 +538,7 @@ const Tiptap = () => {
             <button
               onClick={() => editor.chain().focus().toggleHighlight().run()}
               className={editor.isActive('highlight') ? 'is-active' : ''}
+              data-title='Highlight'
             >
               <LuHighlighter />
             </button>
@@ -528,6 +547,7 @@ const Tiptap = () => {
                 className='color-dropdown-menu-button'
                 onClick={handleClickColorDropdown}
                 ref={colorDropDownButtonRef}
+                data-title='Text Color'
               >
                 <LuPalette style={{color: currentColor}}/> <LuChevronDown className='chevron-down' style={{transform: colorDropDownShown ? 'scale(-1, -1)' : ''}}/>
               </button>
@@ -547,7 +567,7 @@ const Tiptap = () => {
                 }
               </div>
             </div>
-            <button onClick={addImage}>
+            <button onClick={addImage} data-title='Add Image'>
               <LuImage />
             </button>
           </div>
@@ -562,6 +582,7 @@ const Tiptap = () => {
                   .undo()
                   .run()
               }
+              data-title='Undo'
             >
               <LuUndo2 />
             </button>
@@ -574,6 +595,7 @@ const Tiptap = () => {
                   .redo()
                   .run()
               }
+              data-title='Redo'
             >
               <LuRedo2 />
             </button>

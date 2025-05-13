@@ -1,4 +1,36 @@
+@property --color-border1 {
+    syntax: '<color>';
+    initial-value: transparent;
+    inherits: false;
+  }
+@property --color-border2 {
+    syntax: '<color>';
+    initial-value: transparent;
+    inherits: false;
+  }
+@property --color-border3 {
+    syntax: '<color>';
+    initial-value: transparent;
+    inherits: false;
+  }
+@property --color-border4 {
+    syntax: '<color>';
+    initial-value: transparent;
+    inherits: false;
+  }
+@property --color-border5 {
+    syntax: '<color>';
+    initial-value: transparent;
+    inherits: false;
+  }
+
 :root {
+  /* Border Colors */
+  /* --color-border1: #a8bee7;
+  --color-border2: #b9ccef;
+  --color-border3: #c7d4ed;
+  --color-border4: #dbe2ee;
+  --color-border5: #eff1f5; */
   /* Backgrounds */
   --color-bg: #ffffff;
   --color-surface: #f8f9fa;
@@ -82,4 +114,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Angles */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Animations */
+@keyframes border-rotation {
+  to {
+    --border-angle: 360deg;
+  }
 }
