@@ -275,6 +275,20 @@
   }
 }
 
+.submitted-posts-div {
+  @media (hover) and (prefers-reduced-motion: no-preference) {
+    & > .post {
+      transition: 550ms var(--ease), opacity 350ms linear;
+    }
+
+    &:has(> .post:hover) > .post:not(:hover),
+    &:has(> .post:focus-within) > .post:not(:focus-within) {
+      opacity: 0.6;
+      scale: 0.8;
+    }
+  }
+}
+
 .post {
   :first-child {
     margin-top: 0;

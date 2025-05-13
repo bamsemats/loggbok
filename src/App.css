@@ -28,6 +28,70 @@
   color: #61dafb;
 }
 
+.main-page-heading {
+  position: relative;
+  isolation: isolate;
+  letter-spacing: 2px;
+}
+
+.main-page-heading:after {
+  content: 'T h i s i s a n A p p';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 105%;
+  background: linear-gradient(var(--border-angle), #4e9bd5, #2fc4c4, #549f54, #2fc4c4, #4e9bd5);
+  background-size: cover;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.15rem;
+  -webkit-text-stroke-color: transparent;
+  animation: border-rotation 5s linear infinite;
+  filter: grayscale(0.5) blur(5px) opacity(0.8);  
+}
+
+.main-page-heading > span {
+  display: inline-block;
+  margin-left: 0.62rem;
+}
+
+.main-page-heading {
+  --distance-multiplier: 15%;
+  --arc: 3deg;
+
+  &:has(span:nth-child(1):hover) {--target: 1}
+  &:has(span:nth-child(2):hover) {--target: 2}
+  &:has(span:nth-child(3):hover) {--target: 3}
+  &:has(span:nth-child(4):hover) {--target: 4}
+  &:has(span:nth-child(5):hover) {--target: 5}
+  &:has(span:nth-child(6):hover) {--target: 6}
+  &:has(span:nth-child(7):hover) {--target: 7}
+  &:has(span:nth-child(8):hover) {--target: 8}
+  &:has(span:nth-child(9):hover) {--target: 9}
+  &:has(span:nth-child(10):hover) {--target: 10}
+  &:has(span:nth-child(11):hover) {--target: 11}
+
+  @media (hover) and (prefers-reduced-motion: no-preference) {
+    & > span {
+      transition: 550ms var(--ease), opacity 350ms linear, 0.35s transform var(--bounce);
+      transform-origin: 50% 100%;
+    }
+
+    &:has(> span:hover) > span:not(:hover),
+    &:has(> span:focus-within) > span:not(:focus-within) {
+      --distance-from-target: abs(var(--sibling-index) - var(--target));
+      --distance-multiplier-calculation: var(--distance-from-target) * var(--distance-multiplier);
+      --gradual-fadeout: calc(100% - var(--distance-multiplier-calculation));
+      --this-angle: calc((var(--sibling-index) - var(--target)) * var(--arc));
+
+
+      opacity: var(--gradual-fadeout);
+      transform: rotateZ(var(--this-angle));
+    }
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
