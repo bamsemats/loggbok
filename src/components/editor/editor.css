@@ -184,6 +184,7 @@
 }
 .align-dropdown-menu {
   position: absolute;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
